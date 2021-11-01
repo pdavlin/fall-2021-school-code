@@ -141,7 +141,9 @@ for i in range(0,1239):
     for j in range(len(count_vecs[i])):
         # print(j, idf[j])
         idf[j] = idf[j] + j
-
+for i in range(len(idf)):
+    if idf[i] != 0:
+        idf[i] = 1239 / idf[i]
 
 print('Calculating TFIDF vectors for all documents...')
 tfidf_vecs = []
