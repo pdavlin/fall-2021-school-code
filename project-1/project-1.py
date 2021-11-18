@@ -4,7 +4,7 @@ import re
 from bs4 import BeautifulSoup
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 from sklearn.metrics.pairwise import cosine_similarity
-from numpy import zeros, ones
+from numpy import zeros
 
 print('.....PREPROCESSING.....')
 
