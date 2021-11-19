@@ -86,7 +86,7 @@ def calc_gini_index(data, labels):
             gini_left = 1 - gini_left
             gini_right = 1 - gini_right
 
-            t1_gini = (len(left_y) * gini_right + len(right_y) * gini_right)
+            t1_gini = (len(left_y) * gini_left + len(right_y) * gini_right)
 
             value = np.true_divide(t1_gini, len(labels))
 
