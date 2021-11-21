@@ -39,12 +39,12 @@ for i in range(len(labels)):
 
     
 
-def test_classifier(data_train, data_test, classifier, labels_train, labels_test):
-
-
-    classifier.fit(data_train, labels_train)
-    predictions = classifier.predict(data_test)
-    accuracy = classifier.score(data_test, labels_test)
+def test_classifier(data_train, data_test, clf, labels_train, labels_test):
+    print(data_train.shape)
+    print(data_test.shape)
+    clf.fit(data_train, labels_train)
+    predictions = clf.predict(data_test)
+    accuracy = clf.score(data_test, labels_test)
 
 
     cfm = confusion_matrix(labels_test, predictions)
@@ -120,32 +120,58 @@ labels_as_ints_train = labels_as_ints[:11175]
 labels_as_ints_test = labels_as_ints[11175:]
 
 print('=====DEFAULT=====')
-three_classifier_tests(newsgroup_train, newsgroup_test, labels_train, labels_test)
+# three_classifier_tests(newsgroup_train, newsgroup_test, labels_train, labels_test)
 
 print('=====GINI INDEX=====')
 print('getting top fifty features...')
 np_train = np.asarray(newsgroup_train)
-gini = calc_gini_index(np_train, np.asarray(labels_as_ints_train))
-top_fifty_features = get_top_fifty_features(gini)
-print('top fifty features: {}'.format(top_fifty_features))
+# gini = calc_gini_index(np_train, np.asarray(labels_as_ints_train))
+# top_fifty_features = get_top_fifty_features(gini)
+# print('top fifty features: {}'.format(top_fifty_features))
 
-train_top_fifty_only = []
-for i in newsgroup_train:
-    vector_top_fifty = []
-    for j in range(len(i)):
-        if j in top_fifty_features:
-            vector_top_fifty.append(j)
-    train_top_fifty_only.append(vector_top_fifty)
+# train_top_fifty_only = []
+# for i in newsgroup_train:
+#     vector_top_fifty = []
+#     for j in range(len(i)):
+#         if j in top_fifty_features:
+#             vector_top_fifty.append(j)
+#     train_top_fifty_only.append(vector_top_fifty)
 
 
-test_top_fifty_only = []
-for i in newsgroup_test:
-    vector_top_fifty = []
-    for j in range(len(i)):
-        if j in top_fifty_features:
-            vector_top_fifty.append(j)
-    test_top_fifty_only.append(vector_top_fifty)
+# test_top_fifty_only = []
+# for i in newsgroup_test:
+#     vector_top_fifty = []
+#     for j in range(len(i)):
+#         if j in top_fifty_features:
+#             vector_top_fifty.append(j)
+#     test_top_fifty_only.append(vector_top_fifty)
 
-three_classifier_tests(train_top_fifty_only, test_top_fifty_only, labels_train, labels_test)
+# three_classifier_tests(np.asarray(train_top_fifty_only), np.asarray(newsgroup_test), labels_train, labels_test)
 
+
+print('=====CONDITIONAL ENTROPY=====')
+
+def calc_conditional_entropy(data, terms, labels):
+    print(len(data), len(terms))
+    for i in range(len(terms)):
+        # Get number of documents in the dataset that contain the term (e.g., value > 0)
+        n = 0
+        for j in range(len(data)):
+            if data[j][i] > 0:
+                n = n + 1
+        # number of docs not containing the term
+        not_n = len(data) - n
+        p_t = 0
+        p_not_t = 0
+        for k in range(len(labels)):
+            noop
+        log_p_t = np.log(p_t)
+        log_p_not_t = np.log(p_t)
+        # Get fraction of documents pertaining to label
+        # Get 
+
+calc_conditional_entropy(np_train.astype(float), np.asarray(word_names), np.asarray(labels))
+
+
+print('=====POINTWISE MUTUAL INFORMATION=====')
 
