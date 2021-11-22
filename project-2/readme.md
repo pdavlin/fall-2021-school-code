@@ -1,7 +1,7 @@
 Patrick Davlin
 Project 2
 
-This file can be viewed in rich format on Github:
+This file can be viewed in rich format on [Github](https://github.com/pdavlin/fall-2021-school-code/tree/main/project-2)
 
 [Results at bottom of file]
 
@@ -23,52 +23,44 @@ Tests were run with the same seed in all cases so that results could be compared
 
 2. Provide three ways in which you can improve the results from your experiment.
 
->It's difficult to say for sure, but generally speaking there are a few improvements that could be made to the results of this experiment:
+>It's difficult to say for sure without trying them thoroughly, but generally speaking there are a few improvements that could be made to enhance the results of this experiment:
 > 
-> 1. Changing the training/validation split in the incoming dataset
-> 2.  
-> 3.
+> 1. Changing the training/validation split in the incoming dataset. Past assignments have indicated this has a significant impact on the effectiveness of classifiers.
+> 2. Testing different subset sizes for the result of the feature selection algorithms. Reducing to 50 terms seems like it made the classifier less effective in general; it would be interesting to determine whether there's a tradeoff point between minimizing the amount of terms input to the classifier and maximizing accuracy.
+> 3. Combining and comparing feature selection methods. Utilize more than one feature selection methods and isolate the terms that represent a union of their results; columns that appear in two or three feature selections may be more effective in improving the classifier.
 
+
+**Results**
 ```
 =====DEFAULT=====
-Testing classifier results...
+Testing classifier results (seed 99)...
 Default settings
-accuracy: 0.41332975006718625. 6 false positives, 0 false negatives
+accuracy: 0.41655468959957. 2 false positives, 0 false negatives
 max_depth = 5
-accuracy: 0.3388873958613276. 4 false positives, 0 false negatives
-max_features
-accuracy: 0.4157484547164741. 3 false positives, 1 false negatives
+accuracy: 0.3417092179521634. 5 false positives, 0 false negatives
+50% max_samples
+accuracy: 0.32827196990056434. 4 false positives, 0 false negatives
 =====GINI INDEX=====
-top fifty features: [ 74   5   7  43  52  50  57  64  93  99  66  80  31 114 121 108  61  92
-  46  49  82  17 115  38 104 107  37 105  41  76  36 120  98  25  23 116
-  69  65  71  77  20  78  97 118  48  15  96  73  67  90]
-Testing classifier results...
+Testing classifier results (seed 99)...
 Default settings
-accuracy: 0.13625369524321418. 10 false positives, 14 false negatives
+accuracy: 0.13625369524321418. 8 false positives, 8 false negatives
 max_depth = 5
-accuracy: 0.12469766191883902. 3 false positives, 1 false negatives
-max_features
-accuracy: 0.13786616500940607. 7 false positives, 12 false negatives
+accuracy: 0.1263101316850309. 4 false positives, 0 false negatives
+50% max_samples
+accuracy: 0.11421660843859177. 5 false positives, 0 false negatives
 =====CONDITIONAL ENTROPY=====
-top fifty features: [  6 122  53  27  14  79  84  60  32  70  45  21  59  12   2  30   0 103
-  88  85  68 117 112  83  81  24  11  26  33  75   9 102  29  54 111  87
- 101  91  55 109  19   1  63  95  39   4  47  44  16  18]
-Testing classifier results...
+Testing classifier results (seed 99)...
 Default settings
-accuracy: 0.37248051599032517. 5 false positives, 0 false negatives
+accuracy: 0.3723461435098092. 5 false positives, 1 false negatives
 max_depth = 5
-accuracy: 0.3259876377317925. 3 false positives, 0 false negatives
-max_features
-accuracy: 0.3705993012631013. 4 false positives, 0 false negatives
+accuracy: 0.32585326525127656. 4 false positives, 0 false negatives
+50% max_samples
+accuracy: 0.3137597420048374. 4 false positives, 0 false negatives
 =====POINTWISE MUTUAL INFORMATION=====
-top fifty features: [ 22  59  53 107  68  62  42 100 121  88  72 122  40 110 106  11 114 119
-  70  29  26  86  81 103  85  84 113  79 117  33  55 112  19  47  87 101
-  91  60  39 102  16  18  44  75 109  95  54  63  83 111]
-Testing classifier results...
+Testing classifier results (seed 99)...
 Default settings
-accuracy: 0.3554152109647944. 1 false positives, 5 false negatives
+accuracy: 0.3500403117441548. 1 false positives, 4 false negatives
 max_depth = 5
-accuracy: 0.3218220908357968. 3 false positives, 0 false negatives
-max_features
-accuracy: 0.34990593926363883. 2 false positives, 3 false negatives
-```
+accuracy: 0.32262832571889277. 3 false positives, 0 false negatives
+50% max_samples
+accuracy: 0.31013168503090566. 4 false positives, 0 false negatives
